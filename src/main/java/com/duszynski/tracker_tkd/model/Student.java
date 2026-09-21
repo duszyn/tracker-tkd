@@ -16,14 +16,12 @@ public class Student {
 
     @NotNull
     @Column(nullable = false)
-    @Getter
-    @Setter
+    @Getter @Setter
     private String firstName;
 
     @NotNull
     @Column(nullable = false)
-    @Getter
-    @Setter
+    @Getter @Setter
     private String lastName;
 
     @NotNull
@@ -34,8 +32,7 @@ public class Student {
     @NotNull
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    @Getter
-    @Setter
+    @Getter @Setter
     private StudentStatus status;
 
     public Student() {}
