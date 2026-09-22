@@ -1,4 +1,4 @@
-package com.duszynski.tracker_tkd.repositories;
+package com.duszynski.tracker_tkd.repository;
 
 import com.duszynski.tracker_tkd.model.TrainingSession;
 import org.springframework.data.jpa.repository.JpaRepository;
