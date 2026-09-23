@@ -1,6 +1,6 @@
 package com.duszynski.tracker_tkd.dto;
 
-public record StudentRequestDTO(
+public record StudentCreateRequestDTO(
         String firstName,
         String lastName
 ) {

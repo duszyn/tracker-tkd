@@ -2,13 +2,9 @@ package com.duszynski.tracker_tkd.dto;
 
 import com.duszynski.tracker_tkd.model.StudentStatus;
 
-import java.time.LocalDate;
-
-public record StudentResponseDTO(
-        Long id,
+public record StudentUpdateRequestDTO(
         String firstName,
         String lastName,
-        LocalDate joinDate,
         StudentStatus status
 ) {
 }
