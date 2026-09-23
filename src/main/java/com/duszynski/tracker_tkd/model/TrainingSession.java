@@ -22,7 +22,7 @@ public class TrainingSession {
 
     @NotNull
     @Column(nullable = false)
-    @Getter
+    @Getter @Setter
     private LocalDate date;
 
     public TrainingSession(){}

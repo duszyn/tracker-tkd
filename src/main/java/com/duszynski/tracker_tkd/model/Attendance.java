@@ -15,11 +15,11 @@ public class Attendance {
     private Long id;
 
     @ManyToOne
-    @Getter
+    @Setter @Getter
     private Student student;
 
     @ManyToOne
-    @Getter
+    @Setter @Getter
     private TrainingSession trainingSession;
 
     @Column(nullable = false)

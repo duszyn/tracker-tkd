@@ -54,7 +54,7 @@ public class StudentService {
                 .toList();
     }
 
-    private Student findStudentOrThrow(Long id) {
+    public Student findStudentOrThrow(Long id) {
         return studentRepository.findById(id).orElseThrow(() -> new StudentNotFoundException("Student with id " + id + " not found!"));
     }
 
