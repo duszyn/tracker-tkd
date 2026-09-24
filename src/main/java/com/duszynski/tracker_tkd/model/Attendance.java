@@ -32,6 +32,8 @@ public class Attendance {
     @Getter @Setter
     private Integer engagement;
 
+    public Attendance() {}
+
     public Attendance(TrainingSession trainingSession, Student student, boolean present, Integer engagement) {
         this.trainingSession = trainingSession;
         this.student = student;

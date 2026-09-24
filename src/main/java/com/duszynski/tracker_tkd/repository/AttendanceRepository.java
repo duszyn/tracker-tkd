@@ -4,4 +4,6 @@ import com.duszynski.tracker_tkd.model.Attendance;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AttendanceRepository extends JpaRepository<Attendance, Long> {
+
+    boolean existsByStudentIdAndTrainingSessionId(Long studentId, Long trainingSessionId);
 }

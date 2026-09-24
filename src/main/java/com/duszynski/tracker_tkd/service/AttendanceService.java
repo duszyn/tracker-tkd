@@ -2,6 +2,7 @@ package com.duszynski.tracker_tkd.service;
 
 import com.duszynski.tracker_tkd.dto.AttendanceRequestDTO;
 import com.duszynski.tracker_tkd.dto.AttendanceResponseDTO;
+import com.duszynski.tracker_tkd.exception.AttendanceAlreadyExistsException;
 import com.duszynski.tracker_tkd.exception.AttendanceNotFoundException;
 import com.duszynski.tracker_tkd.model.Attendance;
 import com.duszynski.tracker_tkd.model.Student;
@@ -25,9 +26,12 @@ public class AttendanceService {
         this.trainingSessionService = trainingSessionService;
     }
 
-    public AttendanceResponseDTO createAttendance(AttendanceRequestDTO attendanceRequestDTORequestDTO) {
-        Attendance attendance = new Attendance(trainingSessionService.findTrainingSessionOrThrow(attendanceRequestDTORequestDTO.trainingSessionId()), studentService.findStudentOrThrow(attendanceRequestDTORequestDTO.studentId()),
-                attendanceRequestDTORequestDTO.present(), attendanceRequestDTORequestDTO.engagement());
+    public AttendanceResponseDTO createAttendance(AttendanceRequestDTO attendanceRequestDTO) {
+        if(attendanceRepository.existsByStudentIdAndTrainingSessionId(attendanceRequestDTO.studentId(), attendanceRequestDTO.trainingSessionId())) { // Checking if student already has attendance on certain training session
+            throw new AttendanceAlreadyExistsException("Attendance for student id " + attendanceRequestDTO.studentId() + " already exists at this training session!");
+        }
+        Attendance attendance = new Attendance(trainingSessionService.findTrainingSessionOrThrow(attendanceRequestDTO.trainingSessionId()), studentService.findStudentOrThrow(attendanceRequestDTO.studentId()),
+                attendanceRequestDTO.present(), attendanceRequestDTO.engagement());
         Attendance savedAttendance = attendanceRepository.save(attendance);
         return toAttendanceResponseDTO(savedAttendance);
     }
